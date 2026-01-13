@@ -1,3 +1,33 @@
+NAME:
+  #### Gin JW Harris
+
+ADDED TESTS:
+  ```typescript
+  it("handles many special characters", () => {
+    expect(slugify("Hello,!? ;',World")).toBe("hello-world");
+  });
+  ```
+  
+  ```typescript
+  it("It handles empty strings", () => {
+    expect(truncate("", 0)).toBe("");
+  });
+  ```
+
+  ```typescript
+  it("Handles sentences of strings", () => {
+    expect(capitalize("THE red FoX JuMPed oVeR tHE lAzY dog.")).toBe("The red fox jumped over the lazy dog.");
+  });
+  ```
+
+  ```typescript
+  it("counts words in longer sentences", () => {
+    expect(countWords("The red fox jumped over the lazy dog")).toBe(8);
+  });
+  ```
+TESTING TROPHY:
+  This assignment works alongside the testing trophy concept by showing off different sides of the trophy- static testing from the framework itself that was installed, unit tests like those in `math.test.ts` and `strings.test.ts`, and integration tests like those in `content.test.ts`. It also avoids Mocks, focusing on tests themselves instead. It also places focus on the longer integration tests, like how the trophy emphasizes them due to being the best balance between helpfulness and time spent making them.
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/TaS1d2WK)
 # Lab 1: Vitest Setup from Scratch
 
@@ -266,7 +296,7 @@ You should see all tests passing. Notice the structure:
 
 **🤔 Reflection Question:** Look at the `add` tests. The first test uses explicit _Arrange-Act-Assert_ comments. Why might this pattern be useful, especially for complex tests?
 
-*Answer:* Since this breaks the problem into multiple pieces, it's both easier to write the test (having to do so only one step at a time) AND easier to 
+*Answer:* Since this breaks the problem into multiple pieces, it's both easier to write the test (having to do so only one step at a time) AND easier to figure out what part of a test went wrong, in case it is written incorrectly. It also allows for easily changing things like the individual pieces of the test, in case you wanted to alter it or copy and paste it as the base for another test.
 
 ### Step 2.4: See a Test Fail
 
@@ -575,9 +605,15 @@ describe("content service", () => {
 
 1. Looking at `strings.test.ts` and `content.test.ts`, which file contains **unit tests** and which contains **integration tests**? How can you tell the difference?
 
+`strings.test.ts` contains the unit tests, because it is testing each individual function on its own. `content.test.ts` contains the integration tests, as its tests involve multiple functions working to pass a single test with all of their results.
+
 2. If the `slugify` function had a bug, which test files would have failing tests? Why does this happen?
 
+`strings.test.ts` and `content.test.ts`, as both use the `slugify` function for the tests within. Since `math.ts` doesn't use `slugify` at all, it wouldn't be affected.
+
 3. What additional confidence do the integration tests give you that unit tests alone wouldn't provide?
+
+Sometimes, a test might interfere with another test's performance. With unit tests alone, you wouldn't realize this, but with an integration test you can observe both working together as they would often be doing during "real" use.
 
 ---
 

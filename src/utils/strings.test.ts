@@ -45,9 +45,9 @@ describe("string utilities", () => {
       expect(truncate("Hello", 5)).toBe("Hello");
     });
 
-    // it("handles exact length strings", () => {
-    //   expect(truncate("Hello", 5)).toBe("Hello");
-    // });
+    it("It handles empty strings", () => {
+      expect(truncate("", 0)).toBe("");
+    });
   });
 
   describe("capitalize", () => {
@@ -63,7 +63,9 @@ describe("string utilities", () => {
       expect(capitalize("")).toBe("");
     });
 
-    // TODO: Add your own test case
+    it("Handles sentences of strings", () => {
+      expect(capitalize("THE red FoX JuMPed oVeR tHE lAzY dog.")).toBe("The red fox jumped over the lazy dog.");
+    });
   });
 
   describe("countWords", () => {
@@ -83,6 +85,8 @@ describe("string utilities", () => {
       expect(countWords("   ")).toBe(0);
     });
 
-    // TODO: Add your own test case
+    it("counts words in longer sentences", () => {
+      expect(countWords("The red fox jumped over the lazy dog")).toBe(8);
+    });
   });
 });
