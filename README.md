@@ -266,6 +266,8 @@ You should see all tests passing. Notice the structure:
 
 **🤔 Reflection Question:** Look at the `add` tests. The first test uses explicit _Arrange-Act-Assert_ comments. Why might this pattern be useful, especially for complex tests?
 
+*Answer:* Since this breaks the problem into multiple pieces, it's both easier to write the test (having to do so only one step at a time) AND easier to 
+
 ### Step 2.4: See a Test Fail
 
 Temporarily break the `add` function to see what a failing test looks like:
